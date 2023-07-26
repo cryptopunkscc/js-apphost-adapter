@@ -21,8 +21,8 @@ const _wails_bindings = () => ({
     astral_resolve: window['go']['main']['Adapter']['Resolve'],
     astral_service_close: window['go']['main']['Adapter']['ServiceClose'],
     astral_service_register: window['go']['main']['Adapter']['ServiceRegister'],
-    log: window['go']['main']['Adapter']['LogArr'],
     sleep: window['go']['main']['Adapter']['Sleep'],
+    log: window['go']['main']['Adapter']['LogArr'],
 })
 
 // ================== Android bindings adapter ==================
@@ -81,11 +81,11 @@ const _android_bindings = () => {
         astral_service_register: (arg1) =>
             _promise(() => _app_host.serviceRegister(arg1)),
 
-        log: (...arg1) =>
-            _app_host.logArr(JSON.stringify(arg1)),
-
         sleep: (arg1) =>
             _promise(() => _app_host.sleep(arg1)),
+
+        log: (arg1) =>
+            _app_host.logArr(JSON.stringify(arg1)),
     }
 }
 

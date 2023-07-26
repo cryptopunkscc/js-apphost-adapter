@@ -35,3 +35,29 @@ You can zip the contents of the build directory:
 $ (cd build; zip ../app.zip -r .)
 $ astral-runtime-wails app.zip
 ```
+
+## Create bundle with frontend & backend 
+
+App bundle can be installed on the astral agent app.
+
+1. Create `service.js` implementation in project `src` directory.
+2. Append service filename to `public/manifest.json`:
+```json
+  ...
+  "service": "service.js"
+}
+```
+3. Add `bundle` command to `package.json` scripts:
+```json
+  ...
+  "scripts": {
+    ...
+    "bundle": "cp ./src/service.js ./build/ && rm app.zip && cd ./build && zip -r ../app.zip *"
+  },
+  ...
+```
+4. Build & bundle app:
+```shell
+$ npm run build
+$ npm run bundle
+```
